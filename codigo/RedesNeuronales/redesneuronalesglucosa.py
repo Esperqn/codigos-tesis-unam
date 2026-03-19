@@ -31,18 +31,7 @@ os.environ["PYTHONHASHSEED"] = "10"
 os.environ["TF_DETERMINISTIC_OPS"] = "1"
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 
-#Carga de base de datos
-datos = pd.read_csv('Glucosa_Data_Base_Clean.csv')
-print(datos.info())
-print(datos.head())
-
-#Limpieza de datos
-datos_clean=datos.dropna()
-print(datos_clean.info())
-print(datos_clean.head())
-
-
-
+#Clase Callback para graficar métricas
 class MetricsPlotCallback(Callback):
   def on_train_begin(self, logs= None):
     self.train_mae = []
@@ -79,6 +68,17 @@ class MetricsPlotCallback(Callback):
 
     plt.tight_layout()
     plt.show()
+
+
+#Carga de base de datos
+datos = pd.read_csv('Glucosa_Data_Base_Clean.csv')
+print(datos.info())
+print(datos.head())
+
+#Limpieza de datos
+datos_clean=datos.dropna()
+print(datos_clean.info())
+print(datos_clean.head())
 
 #Separación de caracteristicas y objetivo
 X = datos_clean.drop('Glucosa', axis=1) # Todas las columnas
