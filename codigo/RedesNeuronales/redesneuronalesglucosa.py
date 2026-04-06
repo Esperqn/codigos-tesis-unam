@@ -180,13 +180,13 @@ def build_model(hidden1=64, hidden2=32, dropout_rate=0.3, l2_rate=0.001, learnin
 regressor=KerasRegressor(model=build_model, verbose=0)
 
 param_grid = {
-    "model__hidden1": [126, 127, 128],
-    "model__hidden2": [16, 32],
+    "model__hidden1": [32, 64, 128],
+    "model__hidden2": [16, 32, 64],
     "model__dropout_rate": [0.2,0.3,0.4],
-    "model__l2_rate":[0.0001, 0.001],
-    "model__learning_rate": [0.001, 0.0005],
+    "model__l2_rate":[0.0001, 0.001,0.01],
+    "model__learning_rate": [0.001,0.0001, 0.0005],
     "batch_size":[15,30],
-    "epochs":[180,190,200]
+    "epochs":[100,150,200]
 }
 
 cv_strategy = KFold(n_splits=5, shuffle=True, random_state=mejor_semilla)
