@@ -60,7 +60,7 @@ for seed in semillas:
         y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
 
         modelo_rf= RandomForestRegressor (
-            n_estimators=30,
+            n_estimators=100,
             max_depth=18,
             min_samples_split=2,
             min_samples_leaf=1,
